@@ -9,7 +9,7 @@ class NavigationBar extends AppBar {
   BuildContext context;
   Animation w;
   Color color ;
-  NavigationBar({this.context, this.color=Colors.grey[200]})
+  NavigationBar({this.context, this.color= const Color.fromRGBO(194, 194, 214, 1)})
       : super(
           title: Text("Connect Building Solutions"),
           automaticallyImplyLeading: false,

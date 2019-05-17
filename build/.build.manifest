@@ -1,5 +1,20 @@
 .packages
 assets/FontManifest.json
+assets/images/cover/cover.jpg
+assets/images/gallery/20130911_104650526_iOS.jpg
+assets/images/gallery/20150708_045117000_iOS.jpg
+assets/images/gallery/ADVANT.jpg
+assets/images/gallery/DLF SOUTH POINT MALL.jpg
+assets/images/gallery/IIMT,MEERUT.JPG
+assets/images/gallery/IMG_1556.JPG
+assets/images/gallery/MSX MALL,GREATER NOIDA.jpg
+assets/images/gallery/Msx.jpg
+assets/images/gallery/P1010546.JPG
+assets/images/gallery/PHOTO KLI.jpg
+assets/images/gallery/Shipra Mall.jpg
+assets/images/gallery/Shipra mall 1.jpg
+assets/images/gallery/cover.jpg
+assets/images/gallery/image2.JPG
 index.html
 main.dart.js
 packages/$sdk/_internal/ddc_sdk.sum
