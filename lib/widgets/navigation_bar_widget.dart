@@ -7,13 +7,11 @@ import '../pages/gallery_page.dart';
 
 class NavigationBar extends AppBar {
   BuildContext context;
-  Animation w;
-  Color color ;
-  NavigationBar({this.context, this.color= const Color.fromRGBO(194, 194, 214, 1)})
+  NavigationBar({this.context})
       : super(
           title: Text("Connect Building Solutions"),
           automaticallyImplyLeading: false,
-          backgroundColor: color,
+          backgroundColor: Colors.grey[200],
           textTheme: TextTheme(
             body1: TextStyle(
               color: Colors.black,

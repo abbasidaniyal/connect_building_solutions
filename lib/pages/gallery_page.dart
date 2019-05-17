@@ -58,7 +58,6 @@ class _GalleryPageState extends State<GalleryPage> {
     GalleryImage(filePath: 'Msx.jpg'),
   ];
 
-  Color appBarColor = Colors.grey[200];
 
   @override
   Widget build(BuildContext context) {
@@ -68,13 +67,12 @@ class _GalleryPageState extends State<GalleryPage> {
       appBar: MediaQuery.of(context).size.width >= 650
           ? NavigationBar(
               context: context,
-              color: appBarColor,
             )
           : AppBar(
               title: Center(
                 child: Text("Connect Building Solutions"),
               ),
-              backgroundColor: appBarColor,
+              backgroundColor: Colors.grey[200],
               iconTheme: IconThemeData(color: Colors.black),
               textTheme: TextTheme(
                 body1: TextStyle(

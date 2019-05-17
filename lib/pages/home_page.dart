@@ -12,7 +12,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   ScrollController controller = ScrollController(initialScrollOffset: 0.0);
 
-  Color appBarColor = Colors.grey[200];
 
   @override
   void initState() {
@@ -40,13 +39,12 @@ class _HomePageState extends State<HomePage> {
       appBar: MediaQuery.of(context).size.width >= 650
           ? NavigationBar(
               context: context,
-              color: appBarColor,
             )
           : AppBar(
               title: Center(
                 child: Text("Connect Building Solutions"),
               ),
-              backgroundColor: appBarColor,
+              backgroundColor: Colors.grey[200],
               iconTheme: IconThemeData(color: Colors.black),
               textTheme: TextTheme(
                 body1: TextStyle(
