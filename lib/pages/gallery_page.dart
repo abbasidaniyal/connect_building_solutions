@@ -4,7 +4,7 @@ import 'package:flutter_web/widgets.dart';
 
 import '../widgets/navigation_bar_widget.dart';
 import '../widgets/navigation_drawer_widget.dart';
-
+import '../widgets/page_top_widget.dart';
 import '../model/gallery_image.dart';
 
 class GalleryPage extends StatefulWidget {
@@ -86,44 +86,43 @@ class _GalleryPageState extends State<GalleryPage> {
               ),
             ),
       body: Column(
+        
         children: <Widget>[
-          Container(
-            padding: EdgeInsets.all(100.0),
-            child: Text(
-              "Gallery Page",
-              style: TextStyle(
-                fontSize: 24,
-              ),
-              textAlign: TextAlign.center,
-            ),
-          ),
+
+          PageTop(title: "Gallery",),
+          
           Flexible(
-            child: GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount:
-                    (MediaQuery.of(context).orientation == Orientation.portrait)
-                        ? 2
-                        : 4,
-                childAspectRatio: 1,
-                crossAxisSpacing: 40.0,
-                mainAxisSpacing: 50.0,
-              ),
-              itemCount: images.length,
-              itemBuilder: (context, index) {
-                return Container(
-                  child: GridTile(
-                    child: InkWell(
-                      child: Card(
-                        child: Image.asset(
-                          "images/gallery/${images[index].filePath}",
-                          fit: BoxFit.contain,
+
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: GridView.builder(
+                scrollDirection: Axis.vertical,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount:
+                      (MediaQuery.of(context).orientation == Orientation.portrait)
+                          ? 2
+                          : 4,
+                  childAspectRatio: 1,
+                  crossAxisSpacing: 40.0,
+                  mainAxisSpacing: 50.0,
+                ),
+                itemCount: images.length,
+                itemBuilder: (context, index) {
+                  return Container(
+                    child: GridTile(
+                      child: InkWell(
+                        child: Card(
+                          child: Image.asset(
+                            "images/gallery/${images[index].filePath}",
+                            fit: BoxFit.contain,
+                          ),
                         ),
+                        onTap: () {},
                       ),
-                      onTap: () {},
                     ),
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
           )
         ],

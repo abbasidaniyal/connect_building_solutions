@@ -3,6 +3,8 @@ import 'package:flutter_web/material.dart';
 import '../widgets/navigation_bar_widget.dart';
 import '../widgets/navigation_drawer_widget.dart';
 
+import '../widgets/page_top_widget.dart';
+
 class AboutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -26,8 +28,11 @@ class AboutPage extends StatelessWidget {
                 ),
               ),
             ),
-      body: Center(
-        child: Text("About Page"),
+      body: Column(
+        children: <Widget>[
+ PageTop(title: "About Us"),
+        ],
+        
       ),
     );
   }
