@@ -1,18 +1,17 @@
-
 import 'package:connect_building_solutions/pages/about_us_page.dart';
 import 'package:connect_building_solutions/pages/contact_us_page.dart';
 import 'package:connect_building_solutions/pages/home_page.dart';
 import 'package:flutter_web/material.dart';
 import 'package:flutter_web/cupertino.dart';
+import '../pages/gallery_page.dart';
 
 class NavigationBar extends AppBar {
   BuildContext context;
-  Animation w;
   NavigationBar({this.context})
       : super(
           title: Text("Connect Building Solutions"),
           automaticallyImplyLeading: false,
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.grey[200],
           textTheme: TextTheme(
             body1: TextStyle(
               color: Colors.black,
@@ -34,7 +33,7 @@ class NavigationBar extends AppBar {
                 Navigator.push(
                   context,
                   PageRouteBuilder(
-                    pageBuilder: (context,w,s) {
+                    pageBuilder: (context, w, s) {
                       return HomePage();
                     },
                   ),
@@ -53,7 +52,7 @@ class NavigationBar extends AppBar {
                 Navigator.push(
                   context,
                   PageRouteBuilder(
-                    pageBuilder: (context,w,s) {
+                    pageBuilder: (context, w, s) {
                       return AboutPage();
                     },
                   ),
@@ -65,15 +64,14 @@ class NavigationBar extends AppBar {
                 width: 100.0,
                 padding: EdgeInsets.all(10.0),
                 child: Center(
-                  child: Text("Contact us"),
+                  child: Text("Contact Us"),
                 ),
               ),
               onTap: () {
                 Navigator.push(
                   context,
                   PageRouteBuilder(
-
-                    pageBuilder: (context,animation,secomdaryAnimation) {
+                    pageBuilder: (context, animation, secomdaryAnimation) {
                       return ContactPage();
                     },
                   ),
@@ -92,8 +90,8 @@ class NavigationBar extends AppBar {
                 Navigator.push(
                   context,
                   PageRouteBuilder(
-                    pageBuilder: (context,w,s) {
-                      return HomePage();
+                    pageBuilder: (context, w, s) {
+                      return GalleryPage();
                     },
                   ),
                 );

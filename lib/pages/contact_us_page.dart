@@ -2,11 +2,11 @@ import 'package:flutter_web/material.dart';
 
 import '../widgets/navigation_bar_widget.dart';
 import '../widgets/navigation_drawer_widget.dart';
+import '../widgets/page_top_widget.dart';
 
 class ContactPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    print(MediaQuery.of(context).size.width);
     return Scaffold(
       drawer:
           MediaQuery.of(context).size.width < 650 ? NavigationDrawer() : null,
@@ -27,8 +27,11 @@ class ContactPage extends StatelessWidget {
                 ),
               ),
             ),
-      body: Center(
-        child: Text("Contact Page"),
+      body: Column(
+        children: <Widget>[
+ PageTop(title: "Contact Us"),
+        ],
+        
       ),
     );
   }

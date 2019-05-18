@@ -3,6 +3,7 @@ import 'package:flutter_web/material.dart';
 import '../pages/about_us_page.dart';
 import '../pages/contact_us_page.dart';
 import '../pages/home_page.dart';
+import '../pages/gallery_page.dart';
 
 class NavigationDrawer extends StatelessWidget {
   @override
@@ -62,7 +63,7 @@ class NavigationDrawer extends StatelessWidget {
           Container(
             padding: EdgeInsets.all(20.0),
             child: InkWell(
-              child: Text("Contact us"),
+              child: Text("Contact Us"),
               onTap: () {
                 Navigator.pop(context);
                 Navigator.push(
@@ -86,7 +87,7 @@ class NavigationDrawer extends StatelessWidget {
                   context,
                   PageRouteBuilder(
                     pageBuilder: (context, animation, secomdaryAnimation) {
-                      return HomePage();
+                      return GalleryPage();
                     },
                   ),
                 );
