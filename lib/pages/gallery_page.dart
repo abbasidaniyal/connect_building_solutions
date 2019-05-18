@@ -126,9 +126,11 @@ class _GalleryPageState extends State<GalleryPage> {
               },
             ),
             Footer(),
+            
           ],
         ),
       ),
+      
     );
   }
 }

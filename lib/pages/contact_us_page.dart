@@ -3,15 +3,28 @@ import 'package:flutter_web/material.dart';
 import '../widgets/navigation_bar_widget.dart';
 import '../widgets/navigation_drawer_widget.dart';
 import '../widgets/page_top_widget.dart';
+import '../widgets/footer.dart';
 
-class ContactPage extends StatelessWidget {
+class ContactPage extends StatefulWidget {
+  @override
+  _ContactPageState createState() => _ContactPageState();
+}
+
+class _ContactPageState extends State<ContactPage> {
+  Map<String, dynamic> formData = {};
+
+  var key = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       drawer:
           MediaQuery.of(context).size.width < 650 ? NavigationDrawer() : null,
       appBar: MediaQuery.of(context).size.width >= 650
-          ? NavigationBar(context: context,)
+          ? NavigationBar(
+              context: context,
+            )
           : AppBar(
               title: Center(
                 child: Text("Connect Building Solutions"),
@@ -27,12 +40,52 @@ class ContactPage extends StatelessWidget {
                 ),
               ),
             ),
-      body: Column(
-        children: <Widget>[
- PageTop(title: "Contact Us"),
-        ],
-        
+      body: SingleChildScrollView(
+        child: Column(
+          
+          children: <Widget>[
+            PageTop(title: "Contact Us"),
+            Container(
+              width: 200,
+              child: Form(
+                key: key,
+                child: Column(
+                  children: <Widget>[
+                    TextFormField(
+                      decoration: InputDecoration(hintText: "Name"),
+                      onSaved: (name) {
+                        formData["Name"] = name;
+                      },
+                    ),
+                    TextFormField(
+                      decoration: InputDecoration(hintText: "Email"),
+                      onSaved: (email) {
+                        formData["Email"] = email;
+                      },
+                    ),
+                    TextFormField(
+                      decoration: InputDecoration(hintText: "Contact"),
+                      onSaved: (contact) {
+                        formData["Contact"] = contact;
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            RaisedButton(
+              child: Text("Submit"),
+              onPressed: () {
+                print(key.currentState.validate());
+                key.currentState.save();
+                print(formData.toString());
+                key.currentState.reset();
+              },
+            ),
+          ],
+        ),
       ),
+      bottomNavigationBar: Footer(),
     );
   }
 }
