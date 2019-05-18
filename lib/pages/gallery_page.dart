@@ -2,6 +2,7 @@ import 'package:flutter_web/cupertino.dart';
 import 'package:flutter_web/material.dart';
 import 'package:flutter_web/widgets.dart';
 
+import '../widgets/footer.dart';
 import '../widgets/navigation_bar_widget.dart';
 import '../widgets/navigation_drawer_widget.dart';
 import '../widgets/page_top_widget.dart';
@@ -58,7 +59,6 @@ class _GalleryPageState extends State<GalleryPage> {
     GalleryImage(filePath: 'Msx.jpg'),
   ];
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,47 +83,51 @@ class _GalleryPageState extends State<GalleryPage> {
                 ),
               ),
             ),
-      body: Column(
-        
-        children: <Widget>[
+      body: SingleChildScrollView(
+              child: Column(
 
-          PageTop(title: "Gallery",),
-          
-          Flexible(
-
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: GridView.builder(
-                scrollDirection: Axis.vertical,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount:
-                      (MediaQuery.of(context).orientation == Orientation.portrait)
-                          ? 2
-                          : 4,
-                  childAspectRatio: 1,
-                  crossAxisSpacing: 40.0,
-                  mainAxisSpacing: 50.0,
-                ),
-                itemCount: images.length,
-                itemBuilder: (context, index) {
-                  return Container(
-                    child: GridTile(
-                      child: InkWell(
-                        child: Card(
-                          child: Image.asset(
-                            "images/gallery/${images[index].filePath}",
-                            fit: BoxFit.contain,
-                          ),
-                        ),
-                        onTap: () {},
-                      ),
-                    ),
-                  );
-                },
-              ),
+          children: <Widget>[
+            PageTop(
+              title: "Gallery",
             ),
-          )
-        ],
+            GridView.builder(
+              shrinkWrap: true,
+              // primary: false,
+              controller: ScrollController(
+                keepScrollOffset: false,
+                initialScrollOffset: 0.0
+              ),  
+              scrollDirection: Axis.vertical,
+              padding: EdgeInsets.all(20.0),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount:
+                    MediaQuery.of(context).orientation == Orientation.portrait
+                        ? 2
+                        : 4,
+                childAspectRatio: 1,
+                crossAxisSpacing: 40.0,
+                mainAxisSpacing: 50.0,
+              ),
+              itemCount: images.length,
+              itemBuilder: (context, index) {
+                return Container(
+                  child: GridTile(
+                    child: InkWell(
+                      child: Card(
+                        child: Image.asset(
+                          "images/gallery/${images[index].filePath}",
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+                      onTap: () {},
+                    ),
+                  ),
+                );
+              },
+            ),
+            Footer(),
+          ],
+        ),
       ),
     );
   }
