@@ -84,8 +84,7 @@ class _GalleryPageState extends State<GalleryPage> {
               ),
             ),
       body: SingleChildScrollView(
-              child: Column(
-
+        child: Column(
           children: <Widget>[
             PageTop(
               title: "Gallery",
@@ -94,9 +93,7 @@ class _GalleryPageState extends State<GalleryPage> {
               shrinkWrap: true,
               // primary: false,
               controller: ScrollController(
-                keepScrollOffset: false,
-                initialScrollOffset: 0.0
-              ),  
+                  keepScrollOffset: false, initialScrollOffset: 0.0),
               scrollDirection: Axis.vertical,
               padding: EdgeInsets.all(20.0),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -119,18 +116,37 @@ class _GalleryPageState extends State<GalleryPage> {
                           fit: BoxFit.contain,
                         ),
                       ),
-                      onTap: () {},
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return SimpleDialog(
+                              children: <Widget>[
+                                Container(
+                                  height: MediaQuery.of(context).size.width*0.3,
+                                  width: MediaQuery.of(context).size.width*0.3,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(12.0),
+                                    child: Image.asset(
+                                      "images/gallery/${images[index].filePath}",
+                                      fit: BoxFit.contain,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      },
                     ),
                   ),
                 );
               },
             ),
             Footer(),
-            
           ],
         ),
       ),
-      
     );
   }
 }
