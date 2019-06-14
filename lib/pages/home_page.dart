@@ -3,6 +3,8 @@ import 'package:flutter_web/material.dart';
 import '../widgets/navigation_bar_widget.dart';
 import '../widgets/navigation_drawer_widget.dart';
 import '../widgets/page_top_widget.dart';
+import '../widgets/footer.dart';
+import '../widgets/attributes_widget.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -10,9 +12,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  ScrollController controller = ScrollController(initialScrollOffset: 0.0);
-
-
+  ScrollController controller = ScrollController();
   @override
   void initState() {
     super.initState();
@@ -42,7 +42,11 @@ class _HomePageState extends State<HomePage> {
             )
           : AppBar(
               title: Center(
-                child: Text("Connect Building Solutions"),
+                child: Image(
+                  image: AssetImage("logo/logo_transparent.png"),
+                  fit: BoxFit.cover,
+                  height: MediaQuery.of(context).size.height * 0.03,
+                ),
               ),
               backgroundColor: Colors.grey[200],
               iconTheme: IconThemeData(color: Colors.black),
@@ -55,14 +59,29 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-      body: ListView(
+      body: SingleChildScrollView(
         controller: controller,
-        children: <Widget>[
-          PageTop( title: "Home Page",),
-          Center(
-            child: Text("Home Page"),
-          ),
-        ],
+        child: Column(
+          children: <Widget>[
+            PageTop(
+              title: "Home Page",
+            ),
+            Center(
+              child: Text("Home Page"),
+            ),
+            Attributes(),
+            Footer(),
+          ],
+        ),
+      ),
+      floatingActionButton: IconButton(
+        icon: Icon(
+          Icons.arrow_upward,
+          color: Colors.grey,
+        ),
+        onPressed: () {
+          controller.jumpTo(0.0);
+        },
       ),
     );
   }

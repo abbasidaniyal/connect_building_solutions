@@ -15,6 +15,7 @@ class GalleryPage extends StatefulWidget {
 
 class _GalleryPageState extends State<GalleryPage> {
   ScrollController controller = ScrollController(initialScrollOffset: 0.0);
+  ScrollController pageController = ScrollController();
 
   List<GalleryImage> images = [
     GalleryImage(
@@ -70,7 +71,11 @@ class _GalleryPageState extends State<GalleryPage> {
             )
           : AppBar(
               title: Center(
-                child: Text("Connect Building Solutions"),
+                child: Image(
+                  image: AssetImage("logo/logo_transparent.png"),
+                  fit: BoxFit.cover,
+                  height: MediaQuery.of(context).size.height * 0.03,
+                ),
               ),
               backgroundColor: Colors.grey[200],
               iconTheme: IconThemeData(color: Colors.black),
@@ -84,6 +89,7 @@ class _GalleryPageState extends State<GalleryPage> {
               ),
             ),
       body: SingleChildScrollView(
+        controller: pageController,
         child: Column(
           children: <Widget>[
             PageTop(
@@ -123,8 +129,10 @@ class _GalleryPageState extends State<GalleryPage> {
                             return SimpleDialog(
                               children: <Widget>[
                                 Container(
-                                  height: MediaQuery.of(context).size.width*0.3,
-                                  width: MediaQuery.of(context).size.width*0.3,
+                                  height:
+                                      MediaQuery.of(context).size.width * 0.3,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.3,
                                   child: Padding(
                                     padding: const EdgeInsets.all(12.0),
                                     child: Image.asset(
@@ -146,6 +154,17 @@ class _GalleryPageState extends State<GalleryPage> {
             Footer(),
           ],
         ),
+      ),
+      floatingActionButton: IconButton(
+        padding: EdgeInsets.zero,
+        icon: Icon(
+          Icons.arrow_upward,
+          color: Colors.grey,
+        ),
+        onPressed: () {
+          pageController.animateTo(0,
+              curve: Curves.easeIn, duration: Duration(milliseconds: 700));
+        },
       ),
     );
   }

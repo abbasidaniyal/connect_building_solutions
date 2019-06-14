@@ -9,7 +9,12 @@ class NavigationBar extends AppBar {
   BuildContext context;
   NavigationBar({this.context})
       : super(
-          title: Text("Connect Building Solutions"),
+          title: Image(
+          image: AssetImage("logo/logo_transparent.png"),
+          fit: BoxFit.cover,
+          height: MediaQuery.of(context).size.height*0.03,
+          ),
+        
           automaticallyImplyLeading: false,
           backgroundColor: Colors.grey[200],
           textTheme: TextTheme(
